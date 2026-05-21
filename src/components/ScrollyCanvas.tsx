@@ -6,7 +6,7 @@ export default function ScrollyCanvas() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div ref={containerRef} className="h-[500vh] w-full relative">
+    <div ref={containerRef} className="h-[300vh] w-full relative">
       {/* Sticky hero image — fixed while user scrolls through the 500vh */}
       <div className="sticky top-0 left-0 w-full h-screen overflow-hidden">
 
@@ -15,8 +15,7 @@ export default function ScrollyCanvas() {
         <img
           src="/homepage.jpeg"
           alt="Prateek Goswami"
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ objectPosition: "70% center" }}
+          className="absolute inset-0 w-full h-full object-cover object-[50%_center] md:object-[70%_center]"
         />
 
         {/* ── Gradient layers ──────────────────────────────────────────── */}

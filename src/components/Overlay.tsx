@@ -26,8 +26,10 @@ export default function Overlay() {
 
   useEffect(() => {
     const handler = () => {
-      const maxScroll =
-        document.documentElement.scrollHeight - window.innerHeight;
+      // The sticky hero container is 300vh, so its scrollable distance before unpinning is 200vh.
+      // We calculate progress purely based on this hero section so it's perfectly synchronized and snappy.
+      const maxScroll = window.innerHeight * 2;
+        
       const p = maxScroll > 0 ? window.scrollY / maxScroll : 0;
 
       // Scroll indicator hides quickly
@@ -35,16 +37,12 @@ export default function Overlay() {
 
       // Hard boundaries — only ONE section is ever active at a time
       // Gap zones between sections ensure zero overlap
-      if (p < 0.12) {
+      if (p < 0.35) {
         setSection(1);
-      } else if (p < 0.22) {
+      } else if (p < 0.45) {
         setSection(0); // gap: nothing shown
-      } else if (p < 0.47) {
+      } else if (p < 1.0) {
         setSection(2);
-      } else if (p < 0.55) {
-        setSection(0); // gap
-      } else if (p < 0.82) {
-        setSection(3);
       } else {
         setSection(0);
       }
@@ -58,7 +56,7 @@ export default function Overlay() {
   return (
     <div className="fixed inset-0 pointer-events-none z-10 select-none">
       {/* Text column — always left-aligned, never over the face */}
-      <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-20 lg:px-28">
+      <div className="absolute inset-0 flex flex-col justify-end pb-[15vh] md:justify-center md:pb-0 px-8 md:px-20 lg:px-28">
 
         {/* AnimatePresence ensures only ONE section exists in the DOM at a time */}
         <AnimatePresence mode="wait">
@@ -70,7 +68,7 @@ export default function Overlay() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="max-w-[40%] min-w-[280px]"
+              className="w-full md:max-w-[40%] md:min-w-[280px]"
             >
               {/* Eyebrow badge */}
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-xs text-primary font-mono tracking-widest uppercase mb-6 shadow-[0_0_18px_rgba(255,85,0,0.12)]">
@@ -109,7 +107,7 @@ export default function Overlay() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="max-w-[40%] min-w-[280px]"
+              className="w-full md:max-w-[40%] md:min-w-[280px]"
             >
               <div className="text-primary font-mono text-xs tracking-widest uppercase mb-4 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_rgba(255,85,0,0.9)]" />
@@ -129,32 +127,7 @@ export default function Overlay() {
             </motion.div>
           )}
 
-          {section === 3 && (
-            <motion.div
-              key="s3"
-              variants={fadeVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="max-w-[40%] min-w-[280px]"
-            >
-              <div className="text-primary font-mono text-xs tracking-widest uppercase mb-4 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_rgba(255,85,0,0.9)]" />
-                Engineering Edge
-              </div>
-              <h2 className="text-3xl md:text-5xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight drop-shadow-2xl">
-                Turning{" "}
-                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  AI research
-                </span>
-                <br />
-                into scalable
-                <br />
-                <span className="text-neutral-300">products.</span>
-              </h2>
-              <div className="w-20 h-[3px] bg-gradient-to-r from-primary to-accent mt-8 rounded-full shadow-[0_0_12px_rgba(255,85,0,0.5)]" />
-            </motion.div>
-          )}
+
 
         </AnimatePresence>
       </div>
