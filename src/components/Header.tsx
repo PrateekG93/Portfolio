@@ -113,7 +113,7 @@ export default function Header() {
               )}
             </button>
             <a
-              href="/nice_CV.pdf"
+              href="/Prateek_Goswami_CV.pdf"
               download="Prateek_Goswami_CV.pdf"
               className="ml-2 px-4 py-2 rounded-full bg-primary text-white text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 hover:bg-primary/95 hover:shadow-[0_0_20px_rgba(255,85,0,0.4)] active:scale-95"
             >
@@ -188,7 +188,7 @@ export default function Header() {
                 </button>
               </div>
               <a
-                href="/nice_CV.pdf"
+                href="/Prateek_Goswami_CV.pdf"
                 download="Prateek_Goswami_CV.pdf"
                 onClick={() => setMobileMenuOpen(false)}
                 className="px-5 py-2.5 rounded-full bg-primary text-white text-xs font-mono font-bold uppercase tracking-wider shadow-[0_0_15px_rgba(255,85,0,0.3)]"

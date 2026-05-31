@@ -9,12 +9,12 @@ export default function Skills() {
     {
       title: "Languages & Web",
       icon: Code2,
-      skills: ["Python", "C", "C++", "SQL", "JavaScript", "HTML", "CSS", "React"],
+      skills: ["Python", "C", "C++", "SQL", "JavaScript", "HTML", "CSS", "React", "FastAPI"],
     },
     {
       title: "AI & Agentic Systems",
       icon: Terminal,
-      skills: ["LLM APIs (Claude, OpenAI)", "AI Agent Frameworks", "Prompt Engineering", "Tool Use", "RAG Pipelines"],
+      skills: ["LLMs (Claude, OpenAI, Llama 3)", "LangGraph", "AI Agent Frameworks", "Prompt Engineering", "Tool Use", "RAG Pipelines"],
     },
     {
       title: "ML / Deep Learning",

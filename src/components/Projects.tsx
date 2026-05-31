@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Bot, Cpu, Database, Eye, Image as ImageIcon, MessageSquare, Music } from "lucide-react";
+import { Bot, Cpu, Database, ExternalLink, Eye, Image as ImageIcon, MessageSquare, Music } from "lucide-react";
 
 const GithubIcon = ({ className }: { className?: string }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -13,23 +13,25 @@ import CinematicReveal from "./CinematicReveal";
 export default function Projects() {
   const projects = [
     {
-      title: "AI Workflow Automation Agents",
+      title: "AI Outreach Agent",
       category: "Agentic AI & Productivity",
-      image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1000",
+      image: "/AI Outreach Agent.png",
       icon: Bot,
-      tech: ["Python", "Claude API", "OpenAI API", "Tool Use", "Prompt Engineering"],
-      description: "Designed and deployed AI agents leveraging Claude/OpenAI function-calling to automate multi-step enterprise workflows with CoT reasoning and few-shot strategies.",
+      tech: ["Python", "LangGraph", "FastAPI", "Llama 3", "SQLite", "Google Sheets API", "Google Drive API", "RAG"],
+      description: "Built and deployed a LangGraph-based AI agent with tool-calling workflows that scrape company websites, score resume-company fit, generate personalized outreach emails, and evaluate outputs through hallucination detection and quality-scoring pipelines.",
       // ✏️  Paste the full GitHub URL for this project below:
-      github: "",
+      github: "https://github.com/PrateekG93/AI-Internship-Outreach-Agent",
+      liveDemo: "https://web-production-dab3d.up.railway.app/",
       bullets: [
-        "Built internal tooling integrating LLMs with external APIs and data sources using CoT and few-shot strategies.",
-        "Developed agent evaluation loops to monitor output quality, detect hallucinations, and optimize prompt performance."
+        "Tested and debugged agent outputs to improve grounding and reduce hallucination-prone responses.",
+        "Designed a human-in-the-loop review workflow with retrieval-based Style Memory, enabling future generations to adapt from previous user edits and approved responses.",
+        "Integrated SQLite, Google Drive API, and Google Sheets API for persistent tracking of outreach history, evaluation metrics, approval decisions, and generated communications across the agent lifecycle."
       ]
     },
     {
       title: "Real-Time Anti-Cheat Proctoring",
       category: "Computer Vision & Edge Inference",
-      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1000",
+      image: "https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&q=80&w=1000",
       icon: Eye,
       tech: ["Python", "YOLOv5", "Mediapipe", "TensorFlow", "OpenCV"],
       description: "A real-time multi-model inference system detecting gaze deviation, head pose, hand gestures, and unauthorized devices.",
@@ -38,6 +40,20 @@ export default function Projects() {
       bullets: [
         "Logged behavior events with timestamped alerts for fully automated exam monitoring constraints.",
         "Orchestrated multiple CV models in a highly efficient single pipeline showcasing applied agentic design."
+      ]
+    },
+    {
+      title: "Visual Question Answering (VQA)",
+      category: "Multimodal Deep Learning",
+      image: "/VQA.png",
+      icon: Cpu,
+      tech: ["PyTorch", "ResNet / ViT", "BERT", "Transformers", "NLP"],
+      description: "A multimodal neural network generating natural language answers based on images and corresponding questions.",
+      // ✏️  Paste the full GitHub URL for this project below:
+      github: "https://github.com/PrateekG93/Minor_project",
+      bullets: [
+        "Combined ResNet/ViT feature extraction with BERT question encoding structures.",
+        "Evaluated on VQA v2 benchmark covering open-ended and binary question types."
       ]
     },
     {
@@ -52,20 +68,6 @@ export default function Projects() {
       bullets: [
         "Analyzed 7,000+ customer records and engineered features via StringIndexer and VectorAssembler.",
         "Trained Logistic Regression/Random Forest models; tracked experiments with MLflow, achieving 0.83 AUC-ROC."
-      ]
-    },
-    {
-      title: "Visual Question Answering (VQA)",
-      category: "Multimodal Deep Learning",
-      image: "https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=1000",
-      icon: Cpu,
-      tech: ["PyTorch", "ResNet / ViT", "BERT", "Transformers", "NLP"],
-      description: "A multimodal neural network generating natural language answers based on images and corresponding questions.",
-      // ✏️  Paste the full GitHub URL for this project below:
-      github: "",
-      bullets: [
-        "Combined ResNet/ViT feature extraction with BERT question encoding structures.",
-        "Evaluated on VQA v2 benchmark covering open-ended and binary question types."
       ]
     },
     {
@@ -85,7 +87,7 @@ export default function Projects() {
     {
       title: "Attention Image Captioning",
       category: "Deep Learning & Vision-Language",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1000",
+      image: "https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?auto=format&fit=crop&q=80&w=1000",
       icon: ImageIcon,
       tech: ["TensorFlow", "CNN-LSTM", "Bahdanau Attention", "Flickr30k"],
       description: "Developed an attention-based encoder-decoder model to automatically generate descriptive text captions for images.",
@@ -99,7 +101,7 @@ export default function Projects() {
     {
       title: "Lip Sync Generation Pipeline",
       category: "Audio-Visual Deep Learning",
-      image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=1000",
+      image: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&q=80&w=1000",
       icon: Music,
       tech: ["Python", "Wav2Lip", "FFmpeg", "Face Detection", "Mouth ROI"],
       description: "Fine-tuned Wav2Lip-based deep neural networks to synthesize realistic lip movements in video matching arbitrary audio.",
@@ -150,13 +152,13 @@ export default function Projects() {
                 {/* Visual Header Image with gradient overlay */}
                 <div className="relative aspect-[16/10] overflow-hidden">
                   {/* Glowing orange overlay filter on hover */}
-                  <div className="absolute inset-0 bg-[#080808]/70 z-10" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#080808] to-transparent z-15 opacity-80" />
+                  <div className="absolute inset-0 bg-[#080808]/20 z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#080808] to-transparent z-15 opacity-60" />
                   <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 z-15 transition-opacity duration-500" />
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105 opacity-60"
+                    className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105 opacity-90"
                   />
                   {/* floating project icon */}
                   <div className="absolute top-6 left-6 z-25 icon-box w-12 h-12 backdrop-blur-md">
@@ -196,30 +198,49 @@ export default function Projects() {
                       ))}
                     </div>
 
-                    {/* GitHub link button — only shown when github field is filled in */}
-                    {project.github ? (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="flex items-center justify-between text-xs font-mono font-bold text-neutral-300 hover:text-primary transition-colors mt-2 group/link"
-                      >
-                        <span className="uppercase tracking-wider group-hover/link:text-primary transition-colors">
-                          View on GitHub
-                        </span>
-                        <div className="icon-box w-8 h-8 !rounded-full">
-                          <GithubIcon className="w-4 h-4 text-[#ff8a3d] group-hover/link:text-white transition-colors" />
+                    {/* Action Links */}
+                    <div className="flex flex-col gap-2 mt-2">
+                      {project.github ? (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="flex items-center justify-between text-xs font-mono font-bold text-neutral-300 hover:text-primary transition-colors group/link"
+                        >
+                          <span className="uppercase tracking-wider group-hover/link:text-primary transition-colors">
+                            View on GitHub
+                          </span>
+                          <div className="icon-box w-8 h-8 !rounded-full flex items-center justify-center">
+                            <GithubIcon className="w-4 h-4 text-[#ff8a3d] group-hover/link:text-white transition-colors" />
+                          </div>
+                        </a>
+                      ) : (
+                        <div className="flex items-center justify-between text-xs font-mono font-bold text-neutral-300/40 cursor-default">
+                          <span className="uppercase tracking-wider">GitHub Coming Soon</span>
+                          <div className="icon-box w-8 h-8 !rounded-full opacity-40 flex items-center justify-center">
+                            <GithubIcon className="w-4 h-4 text-[#ff8a3d]" />
+                          </div>
                         </div>
-                      </a>
-                    ) : (
-                      <div className="flex items-center justify-between text-xs font-mono font-bold text-neutral-300/40 mt-2 cursor-default">
-                        <span className="uppercase tracking-wider">GitHub Coming Soon</span>
-                        <div className="icon-box w-8 h-8 !rounded-full opacity-40">
-                          <GithubIcon className="w-4 h-4 text-[#ff8a3d]" />
-                        </div>
-                      </div>
-                    )}
+                      )}
+                      
+                      {(project as any).liveDemo && (
+                        <a
+                          href={(project as any).liveDemo}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="flex items-center justify-between text-xs font-mono font-bold text-neutral-300 hover:text-primary transition-colors group/link"
+                        >
+                          <span className="uppercase tracking-wider group-hover/link:text-primary transition-colors">
+                            Live Demo
+                          </span>
+                          <div className="icon-box w-8 h-8 !rounded-full flex items-center justify-center">
+                            <ExternalLink className="w-4 h-4 text-[#ff8a3d] group-hover/link:text-white transition-colors" />
+                          </div>
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </motion.div>
